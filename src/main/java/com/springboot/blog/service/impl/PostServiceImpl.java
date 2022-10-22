@@ -25,7 +25,7 @@ public class PostServiceImpl implements PostService {
     private ModelMapper modelMapper;
 
     @Autowired
-    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper){
+    public PostServiceImpl(PostRepository postRepository, ModelMapper modelMapper) {
         this.postRepository = postRepository;
         this.modelMapper = modelMapper;
     }
@@ -48,8 +48,7 @@ public class PostServiceImpl implements PostService {
     public PostResponse getAllPosts(int pageNo, int pageSize, String sortBy, String sortDir) {
 
         // sorts based on the direction we give as input - sortDir="asc" or sortDir="dsc"
-        Sort sortedByDir = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending()
-                : Sort.by(sortBy).descending();
+        Sort sortedByDir = sortDir.equalsIgnoreCase(Sort.Direction.ASC.name()) ? Sort.by(sortBy).ascending() : Sort.by(sortBy).descending();
 
         // creating pageable instance
         // we can pass sortBy instead of sortedByDir in the absence of sort direction
@@ -97,7 +96,7 @@ public class PostServiceImpl implements PostService {
         postRepository.delete(post);
     }
 
-    private Post mapToEntity(PostDto postDto){
+    private Post mapToEntity(PostDto postDto) {
         Post post = modelMapper.map(postDto, Post.class);
         /*Post post = new Post();
         post.setTitle(postDto.getTitle());
@@ -106,7 +105,7 @@ public class PostServiceImpl implements PostService {
         return post;
     }
 
-    private PostDto mapToDto(Post post){
+    private PostDto mapToDto(Post post) {
         PostDto postDto = modelMapper.map(post, PostDto.class);
         /*PostDto postResponse = new PostDto();
         postResponse.setId(post.getId());
