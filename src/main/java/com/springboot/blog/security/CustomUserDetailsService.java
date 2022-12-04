@@ -31,7 +31,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 
         // takes email, password and role of a user as an input
         // since, we have set of roles we have to convert that set
-        // to set of granted authorities
+        // to a set of granted authorities
         return new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 mapRolesToAuthorities(user.getRoles()));
     }
